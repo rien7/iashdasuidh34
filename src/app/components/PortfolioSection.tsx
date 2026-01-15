@@ -50,68 +50,42 @@ export default function PortfolioSection() {
   ];
 
   return (
-    <section className="relative min-h-screen w-full bg-[#F5F3F0] pt-24 pb-12 lg:pt-28 rounded-t-[40px] overflow-hidden scroll-mt-24 lg:scroll-mt-28">      <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
-      {/* Header */}
-      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 gap-6">
-        <div className="flex flex-col items-center w-full">
-          <h1 className="text-4xl lg:text-5xl mb-4 text-black tracking-tight">
-            产品矩阵
-          </h1>
-          <nav className="flex gap-8 text-sm text-black/70">
-            <span className="hover:text-black transition-colors">
-              整合本土最大营销集团与前阿里技术团队的能力与经验，为品牌客户提供具备营销智慧的产品技术解决方案，引领企业营销新增长
-            </span>
-          </nav>
+    <section className="relative min-h-screen w-full bg-[#F5F3F0] pt-24 pb-12 lg:pt-28 rounded-t-[40px] overflow-hidden scroll-mt-24 lg:scroll-mt-28">
+      <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 gap-6">
+          <div className="flex flex-col items-center w-full">
+            <h1 className="text-4xl lg:text-5xl mb-4 text-black tracking-tight">
+              产品矩阵
+            </h1>
+            <nav className="flex gap-8 text-sm text-black/70">
+              <span className="hover:text-black transition-colors">
+                整合本土最大营销集团与前阿里技术团队的能力与经验，为品牌客户提供具备营销智慧的产品技术解决方案，引领企业营销新增长
+              </span>
+            </nav>
+          </div>
         </div>
-      </div>
 
-      {/* Portfolio Grid - Horizontal scroll on mobile, flex on desktop */}
-      <div className="flex gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 -mx-8 px-8 lg:mx-0 lg:px-0">
-        {portfolioItems.map((item) => (
-          <div
-            key={item.id}
-            className={`relative group cursor-pointer flex-shrink-0 transition-[width] duration-500 ease-out ${hoveredId === null
-              ? "w-[320px]"
-              : hoveredId === item.id
-                ? "w-[440px]"
-                : "w-[280px]"}`}
-            onMouseEnter={() => setHoveredId(item.id)}
-            onMouseLeave={() => setHoveredId(null)}
-          >
-            {/* Card Container */}
+        {/* Portfolio Grid - Horizontal scroll on mobile, flex on desktop */}
+        <div className="flex gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 -mx-8 px-8 lg:mx-0 lg:px-0">
+          {portfolioItems.map((item) => (
             <div
-              className={`relative h-[640px] w-full rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${hoveredId === item.id
-                ? "shadow-2xl"
-                : "shadow-lg"
-                }`}
+              key={item.id}
+              className={`relative group cursor-pointer flex-shrink-0 transition-[width] duration-500 ease-out ${hoveredId === null
+                ? "w-[320px]"
+                : hoveredId === item.id
+                  ? "w-[440px]"
+                  : "w-[280px]"}`}
+              onMouseEnter={() => setHoveredId(item.id)}
+              onMouseLeave={() => setHoveredId(null)}
             >
-              {/* Collapsed State - Not Hovered */}
+              {/* Card Container */}
               <div
-                className={`absolute inset-0 transition-opacity duration-300 ${hoveredId === item.id ? "opacity-0 pointer-events-none" : "opacity-100"
+                className={`relative h-[640px] w-full rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${hoveredId === item.id
+                  ? "shadow-2xl -translate-y-3"
+                  : "shadow-lg translate-y-0"
                   }`}
               >
-                {/* Product logo centered */}
-                <div className="absolute inset-0 flex items-center justify-center p-12">
-                  <ImageWithFallback
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-auto object-contain max-w-[200px]"
-                  />
-                </div>
-
-                {/* Product name at bottom center */}
-                <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-                  <h3 className="text-2xl font-medium text-black px-8 text-center">
-                    {item.name}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Expanded State - Hovered */}
-              <div
-                className={`absolute inset-0 transition-opacity duration-300 ${hoveredId === item.id ? "opacity-100 translate-y-0" : "opacity-0 pointer-events-none translate-y-4"}`}
-              >
-                {/* Product logo centered in full card */}
                 <div className="absolute inset-0 flex items-center justify-center p-12">
                   <ImageWithFallback
                     src={item.image}
@@ -120,36 +94,38 @@ export default function PortfolioSection() {
                   />
                 </div>
 
-                {/* Bottom section - Details (Fixed at bottom) */}
-                <div className="absolute bottom-0 left-0 right-0 bg-white/40 backdrop-blur-xl p-8 space-y-4 rounded-[24px]">
-                  {/* Product Name */}
-                  <h3 className="text-3xl font-semibold text-black tracking-tight">
-                    {item.name}
-                  </h3>
-
-                  {/* Slogan and Description */}
-                  <div className="space-y-2">
-                    <p className="text-base text-black/80">
-                      {item.slogan}
-                    </p>
-                    <p className="text-base text-black/80">
-                      {item.description}
-                    </p>
-                  </div>
-
-                  {/* Click to learn more button */}
-                  <div className="flex justify-end">
-                    <button className="px-6 py-2 border-2 border-[#E8A870] rounded-full text-sm text-black hover:bg-[#E8A870]/10 transition-colors">
-                      点击了解
-                    </button>
+                <div className="absolute inset-x-0 bottom-0">
+                  <div className="bg-white/50 backdrop-blur-xl p-8 rounded-[24px]">
+                    <div className="space-y-2">
+                      <h3 className="text-3xl font-semibold text-black tracking-tight">
+                        {item.name}
+                      </h3>
+                      <p className="text-base text-black/80">
+                        {item.slogan}
+                      </p>
+                    </div>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${hoveredId === item.id
+                        ? "opacity-100 max-h-32 translate-y-0"
+                        : "opacity-0 max-h-0 -translate-y-2"
+                        }`}
+                    >
+                      <p className="text-base text-black/80 mt-4">
+                        {item.description}
+                      </p>
+                      <div className="mt-4 flex justify-end">
+                        <button className="px-6 py-2 border-2 border-[#E8A870] rounded-full text-sm text-black hover:bg-[#E8A870]/10 transition-colors">
+                          点击了解
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
 
       <style>{`
         /* Custom scrollbar for mobile */
