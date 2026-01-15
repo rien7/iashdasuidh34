@@ -1,4 +1,14 @@
 import { useState, useEffect, useRef } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+
+const navLinks = [
+  { id: 'home', label: '首页', to: '/' },
+  { id: 'xiaofeilun', label: '小飞轮', to: '/xiaofeilun' },
+  { id: 'qiankunta', label: '乾坤塔', to: '/qiankunta' },
+  { id: 'huojianqiang', label: '火尖枪', to: '/huojianqiang' },
+  { id: 'wenwo', label: '问我', to: '/wenwo' },
+  { id: 'about', label: '关于我们', to: '/about' },
+];
 
 export default function Navigation() {
   const [scrollY, setScrollY] = useState(0);
@@ -6,6 +16,7 @@ export default function Navigation() {
   const [capsuleStyle, setCapsuleStyle] = useState({ left: 0, width: 0 });
   const navRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,15 +28,19 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
-    // Update capsule position when active link changes
+    const currentLink = navLinks.find((link) => link.to === location.pathname) ?? navLinks[0];
+    setActiveLink(currentLink.id);
+  }, [location.pathname]);
+
+  useEffect(() => {
     const updateCapsulePosition = () => {
       const activeElement = linksRef.current[activeLink];
       const navElement = navRef.current;
-      
+
       if (activeElement && navElement) {
         const navRect = navElement.getBoundingClientRect();
         const linkRect = activeElement.getBoundingClientRect();
-        
+
         setCapsuleStyle({
           left: linkRect.left - navRect.left,
           width: linkRect.width,
@@ -35,27 +50,15 @@ export default function Navigation() {
 
     updateCapsulePosition();
     window.addEventListener('resize', updateCapsulePosition);
-    
+
     return () => window.removeEventListener('resize', updateCapsulePosition);
   }, [activeLink]);
 
-  // Calculate border radius based on scroll (0 to 40px)
   const borderRadius = Math.min(scrollY / 5, 40);
-  
-  // Calculate top gap based on scroll (0 to 20px)
+
   const topGap = Math.min(scrollY / 10, 20);
 
-  // Calculate background opacity based on scroll
   const bgOpacity = Math.min(scrollY / 200, 1);
-
-  const navLinks = [
-    { id: 'home', label: '首页', href: '#' },
-    { id: 'xiaofeilun', label: '小飞轮', href: '#xiaofeilun' },
-    { id: 'qiankunta', label: '乾坤塔', href: '#qiankunta' },
-    { id: 'huojianqiang', label: '火尖枪', href: '#huojianqiang' },
-    { id: 'wenwo', label: '问我', href: '#wenwo' },
-    { id: 'about', label: '关于我们', href: '#about' },
-  ];
 
   return (
     <nav 
@@ -88,14 +91,12 @@ export default function Navigation() {
         />
         
         {navLinks.map((link) => (
-          <a
+          <NavLink
             key={link.id}
             ref={(el) => (linksRef.current[link.id] = el)}
-            href={link.href}
-            onClick={(e) => {
-              e.preventDefault();
-              setActiveLink(link.id);
-            }}
+            to={link.to}
+            end={link.to === '/'}
+            onClick={() => setActiveLink(link.id)}
             className={`flex items-center gap-2 px-4 py-2 transition-colors relative ${
               activeLink === link.id ? 'text-white' : 'hover:text-white'
             }`}
@@ -104,7 +105,7 @@ export default function Navigation() {
               <span className="w-2 h-2 rounded-full border-2 border-red-500"></span>
             )}
             {link.label}
-          </a>
+          </NavLink>
         ))}
       </div>
 
