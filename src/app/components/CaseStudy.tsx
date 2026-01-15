@@ -18,6 +18,7 @@ interface CaseItem {
 export default function CaseStudy() {
   const [activeTab, setActiveTab] = useState('汽车');
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [activeCard, setActiveCard] = useState(0);
 
   const tabs = ['汽车', '快消', '3C', '教育', '酒水', '文娱', '出海'];
 
@@ -63,6 +64,8 @@ export default function CaseStudy() {
     }
   ];
 
+  const activeCase = cases[activeCard];
+
   return (
     <section className="relative w-full bg-[#F5F3F0] pt-24 pb-20 lg:pt-28 rounded-b-[40px] scroll-mt-24 lg:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
@@ -106,85 +109,86 @@ export default function CaseStudy() {
             </button>
 
             {/* Cards Grid */}
-            <div className="flex gap-6 relative">
+            <div
+              className="flex gap-6 relative"
+              onMouseLeave={() => setHoveredCard(null)}
+            >
               {cases.map((caseItem, index) => (
                 <div
                   key={caseItem.id}
-                  className={`transition-all duration-700 ease-in-out overflow-hidden ${hoveredCard === index
-                    ? 'flex-[3]'
-                    : hoveredCard !== null
-                      ? 'flex-[0.5]'
-                      : 'flex-1'
-                    }`}
-                  onMouseEnter={() => setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
+                  className="transition-all duration-700 ease-in-out overflow-hidden flex-1"
+                  onMouseEnter={() => {
+                    setHoveredCard(index);
+                    setActiveCard(index);
+                  }}
                 >
                   <div className="relative h-full min-h-[400px]">
                     {/* Normal View - Always visible as background */}
-                    <div className={`absolute inset-0 rounded-xl overflow-hidden transition-opacity duration-500 ${hoveredCard === index ? 'opacity-0' : 'opacity-100'
-                      }`}>
+                    <div className="absolute inset-0 rounded-xl overflow-hidden">
                       <ImageWithFallback
                         src={caseItem.image}
                         alt={caseItem.title}
                         className="w-full h-full object-cover"
                       />
                     </div>
-
-                    {/* Expanded Details - Shows on hover */}
-                    <div className={`absolute inset-0 bg-white rounded-xl shadow-2xl transition-opacity duration-500 flex gap-0 p-0 ${hoveredCard === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                      }`}>
-                      {/* Left - Large Image */}
-                      <div className="flex-1 overflow-hidden rounded-l-xl">
-                        <ImageWithFallback
-                          src={caseItem.image}
-                          alt={caseItem.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-
-                      {/* Right - Content */}
-                      <div className="flex-1 flex flex-col p-8">
-                        {/* Tag and Badge Row */}
-                        <div className="flex items-center gap-3 mb-8">
-                          <div className="flex items-center gap-2">
-                            <svg className="w-16 h-4" viewBox="0 0 80 20" fill="none">
-                              <text x="0" y="14" className="text-xs font-medium fill-black">小鹏品牌站</text>
-                            </svg>
-                          </div>
-                          <div className="px-4 py-1.5 rounded-full border-2 border-orange-400 text-orange-500 text-sm font-medium">
-                            {caseItem.tag}
-                          </div>
-                          <div className="ml-auto">
-                            <button className="px-8 py-2.5 rounded-full border-2 border-orange-400 text-black text-sm font-medium hover:bg-orange-50 transition-all">
-                              了解详情
-                            </button>
-                          </div>
-                        </div>
-
-                        {/* Title */}
-                        <h3 className="text-3xl font-bold text-black mb-6">{caseItem.title}</h3>
-
-                        {/* Description */}
-                        <p className="text-gray-500 text-sm leading-relaxed mb-12">
-                          {caseItem.description}
-                        </p>
-
-                        {/* Stats - Bottom aligned */}
-                        <div className="flex items-center gap-16 mt-auto">
-                          {caseItem.stats.map((stat, idx) => (
-                            <div key={idx}>
-                              <div className="text-4xl font-bold text-blue-600 mb-2">
-                                {stat.value}
-                              </div>
-                              <div className="text-sm text-gray-600">{stat.label}</div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               ))}
+              <div
+                className={`absolute inset-0 z-10 transition-opacity duration-500 ${hoveredCard !== null ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                  }`}
+              >
+                <div className="absolute inset-0 bg-white rounded-xl shadow-2xl flex gap-0 p-0">
+                  {/* Left - Large Image */}
+                  <div className="flex-1 overflow-hidden rounded-l-xl">
+                    <ImageWithFallback
+                      src={activeCase.image}
+                      alt={activeCase.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Right - Content */}
+                  <div className="flex-1 flex flex-col p-8">
+                    {/* Tag and Badge Row */}
+                    <div className="flex items-center gap-3 mb-8">
+                      <div className="flex items-center gap-2">
+                        <svg className="w-16 h-4" viewBox="0 0 80 20" fill="none">
+                          <text x="0" y="14" className="text-xs font-medium fill-black">小鹏品牌站</text>
+                        </svg>
+                      </div>
+                      <div className="px-4 py-1.5 rounded-full border-2 border-orange-400 text-orange-500 text-sm font-medium">
+                        {activeCase.tag}
+                      </div>
+                      <div className="ml-auto">
+                        <button className="px-8 py-2.5 rounded-full border-2 border-orange-400 text-black text-sm font-medium hover:bg-orange-50 transition-all">
+                          了解详情
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-3xl font-bold text-black mb-6">{activeCase.title}</h3>
+
+                    {/* Description */}
+                    <p className="text-gray-500 text-sm leading-relaxed mb-12">
+                      {activeCase.description}
+                    </p>
+
+                    {/* Stats - Bottom aligned */}
+                    <div className="flex items-center gap-16 mt-auto">
+                      {activeCase.stats.map((stat, idx) => (
+                        <div key={idx}>
+                          <div className="text-4xl font-bold text-blue-600 mb-2">
+                            {stat.value}
+                          </div>
+                          <div className="text-sm text-gray-600">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
