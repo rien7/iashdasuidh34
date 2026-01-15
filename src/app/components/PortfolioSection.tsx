@@ -50,8 +50,7 @@ export default function PortfolioSection() {
   ];
 
   return (
-    <section className="relative min-h-screen w-full bg-[#F5F3F0] py-12 rounded-t-[40px] overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
+    <section className="relative min-h-screen w-full bg-[#F5F3F0] pt-24 pb-12 lg:pt-28 rounded-t-[40px] overflow-hidden scroll-mt-24 lg:scroll-mt-28">      <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 gap-6">
           <div className="flex flex-col items-center w-full">
@@ -71,7 +70,7 @@ export default function PortfolioSection() {
           {portfolioItems.map((item) => (
             <div
               key={item.id}
-              className="relative flex-shrink-0 group cursor-pointer"
+              className={`relative group cursor-pointer flex-shrink-0 lg:flex-shrink lg:min-w-0 transition-[flex] duration-500 ease-out ${hoveredId === item.id ? "lg:flex-[1.6]" : "lg:flex-[1]"}`}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
             >

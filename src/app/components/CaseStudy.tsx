@@ -64,7 +64,7 @@ export default function CaseStudy() {
   ];
 
   return (
-    <section className="relative w-full bg-[#F5F3F0] py-20 rounded-b-[40px]">
+    <section className="relative w-full bg-[#F5F3F0] pt-24 pb-20 lg:pt-28 rounded-b-[40px] scroll-mt-24 lg:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         {/* Title and Subtitle - Outside white container */}
         <div className="text-center mb-12">
