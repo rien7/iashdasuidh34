@@ -66,19 +66,23 @@ export default function PortfolioSection() {
       </div>
 
       {/* Portfolio Grid - Horizontal scroll on mobile, flex on desktop */}
-      <div className="flex gap-6 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 -mx-8 px-8 lg:mx-0 lg:px-0">
+      <div className="flex gap-4 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 -mx-8 px-8 lg:mx-0 lg:px-0">
         {portfolioItems.map((item) => (
           <div
             key={item.id}
-            className={`relative group cursor-pointer flex-shrink-0 lg:flex-shrink lg:min-w-0 transition-[flex] duration-500 ease-out ${hoveredId === item.id ? "lg:flex-[1.6]" : "lg:flex-[1]"}`}
+            className={`relative group cursor-pointer flex-shrink-0 transition-[width] duration-500 ease-out ${hoveredId === null
+              ? "w-[320px]"
+              : hoveredId === item.id
+                ? "w-[440px]"
+                : "w-[280px]"}`}
             onMouseEnter={() => setHoveredId(item.id)}
             onMouseLeave={() => setHoveredId(null)}
           >
             {/* Card Container */}
             <div
-              className={`relative h-[500px] rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${hoveredId === item.id
-                ? "w-[360px] shadow-2xl"
-                : "w-[280px] shadow-lg"
+              className={`relative h-[500px] w-full rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${hoveredId === item.id
+                ? "shadow-2xl"
+                : "shadow-lg"
                 }`}
             >
               {/* Collapsed State - Not Hovered */}
