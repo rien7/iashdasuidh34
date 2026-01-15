@@ -51,105 +51,102 @@ export default function PortfolioSection() {
 
   return (
     <section className="relative min-h-screen w-full bg-[#F5F3F0] pt-24 pb-12 lg:pt-28 rounded-t-[40px] overflow-hidden scroll-mt-24 lg:scroll-mt-28">      <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 gap-6">
-          <div className="flex flex-col items-center w-full">
-            <h1 className="text-4xl lg:text-5xl mb-4 text-black tracking-tight">
-              产品矩阵
-            </h1>
-            <nav className="flex gap-8 text-sm text-black/70">
-              <span className="hover:text-black transition-colors">
-                整合本土最大营销集团与前阿里技术团队的能力与经验，为品牌客户提供具备营销智慧的产品技术解决方案，引领企业营销新增长
-              </span>
-            </nav>
-          </div>
+      {/* Header */}
+      <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 gap-6">
+        <div className="flex flex-col items-center w-full">
+          <h1 className="text-4xl lg:text-5xl mb-4 text-black tracking-tight">
+            产品矩阵
+          </h1>
+          <nav className="flex gap-8 text-sm text-black/70">
+            <span className="hover:text-black transition-colors">
+              整合本土最大营销集团与前阿里技术团队的能力与经验，为品牌客户提供具备营销智慧的产品技术解决方案，引领企业营销新增长
+            </span>
+          </nav>
         </div>
+      </div>
 
-        {/* Portfolio Grid - Horizontal scroll on mobile, flex on desktop */}
-        <div className="flex gap-6 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 -mx-8 px-8 lg:mx-0 lg:px-0">
-          {portfolioItems.map((item) => (
+      {/* Portfolio Grid - Horizontal scroll on mobile, flex on desktop */}
+      <div className="flex gap-6 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 -mx-8 px-8 lg:mx-0 lg:px-0">
+        {portfolioItems.map((item) => (
+          <div
+            key={item.id}
+            className={`relative group cursor-pointer flex-shrink-0 lg:flex-shrink lg:min-w-0 transition-[flex] duration-500 ease-out ${hoveredId === item.id ? "lg:flex-[1.6]" : "lg:flex-[1]"}`}
+            onMouseEnter={() => setHoveredId(item.id)}
+            onMouseLeave={() => setHoveredId(null)}
+          >
+            {/* Card Container */}
             <div
-              key={item.id}
-              className={`relative group cursor-pointer flex-shrink-0 lg:flex-shrink lg:min-w-0 transition-[flex] duration-500 ease-out ${hoveredId === item.id ? "lg:flex-[1.6]" : "lg:flex-[1]"}`}
-              onMouseEnter={() => setHoveredId(item.id)}
-              onMouseLeave={() => setHoveredId(null)}
-            >
-              {/* Card Container */}
-              <div
-                className={`relative h-[500px] rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${
-                  hoveredId === item.id
-                    ? "w-[360px] shadow-2xl"
-                    : "w-[280px] shadow-lg"
+              className={`relative h-[500px] rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${hoveredId === item.id
+                  ? "w-[360px] shadow-2xl"
+                  : "w-[280px] shadow-lg"
                 }`}
-              >
-                {/* Collapsed State - Not Hovered */}
-                <div
-                  className={`absolute inset-0 transition-opacity duration-300 ${
-                    hoveredId === item.id ? "opacity-0 pointer-events-none" : "opacity-100"
+            >
+              {/* Collapsed State - Not Hovered */}
+              <div
+                className={`absolute inset-0 transition-opacity duration-300 ${hoveredId === item.id ? "opacity-0 pointer-events-none" : "opacity-100"
                   }`}
-                >
-                  {/* Product logo centered */}
-                  <div className="absolute inset-0 flex items-center justify-center p-12">
-                    <ImageWithFallback
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-auto object-contain max-w-[200px]"
-                    />
-                  </div>
-
-                  {/* Product name at bottom center */}
-                  <div className="absolute bottom-8 left-0 right-0 flex justify-center">
-                    <h3 className="text-2xl font-medium text-black px-8 text-center">
-                      {item.name}
-                    </h3>
-                  </div>
+              >
+                {/* Product logo centered */}
+                <div className="absolute inset-0 flex items-center justify-center p-12">
+                  <ImageWithFallback
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-auto object-contain max-w-[200px]"
+                  />
                 </div>
 
-                {/* Expanded State - Hovered */}
-                <div
-                  className={`absolute inset-0 transition-opacity duration-300 ${
-                    hoveredId === item.id ? "opacity-100" : "opacity-0 pointer-events-none"
+                {/* Product name at bottom center */}
+                <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+                  <h3 className="text-2xl font-medium text-black px-8 text-center">
+                    {item.name}
+                  </h3>
+                </div>
+              </div>
+
+              {/* Expanded State - Hovered */}
+              <div
+                className={`absolute inset-0 transition-opacity duration-300 ${hoveredId === item.id ? "opacity-100" : "opacity-0 pointer-events-none"
                   }`}
-                >
-                  {/* Product logo centered in full card */}
-                  <div className="absolute inset-0 flex items-center justify-center p-12">
-                    <ImageWithFallback
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-auto object-contain max-w-[240px]"
-                    />
+              >
+                {/* Product logo centered in full card */}
+                <div className="absolute inset-0 flex items-center justify-center p-12">
+                  <ImageWithFallback
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-auto object-contain max-w-[240px]"
+                  />
+                </div>
+
+                {/* Bottom section - Details (Fixed at bottom) */}
+                <div className="absolute bottom-0 left-0 right-0 bg-white/40 backdrop-blur-xl p-8 space-y-4 rounded-[24px]">
+                  {/* Product Name */}
+                  <h3 className="text-3xl font-semibold text-black tracking-tight">
+                    {item.name}
+                  </h3>
+
+                  {/* Slogan and Description */}
+                  <div className="space-y-2">
+                    <p className="text-base text-black/80">
+                      {item.slogan}
+                    </p>
+                    <p className="text-base text-black/80">
+                      {item.description}
+                    </p>
                   </div>
 
-                  {/* Bottom section - Details (Fixed at bottom) */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-white/40 backdrop-blur-xl p-8 space-y-4 rounded-[24px]">
-                    {/* Product Name */}
-                    <h3 className="text-3xl font-semibold text-black tracking-tight">
-                      {item.name}
-                    </h3>
-
-                    {/* Slogan and Description */}
-                    <div className="space-y-2">
-                      <p className="text-base text-black/80">
-                        {item.slogan}
-                      </p>
-                      <p className="text-base text-black/80">
-                        {item.description}
-                      </p>
-                    </div>
-
-                    {/* Click to learn more button */}
-                    <div className="flex justify-end">
-                      <button className="px-6 py-2 border-2 border-[#E8A870] rounded-full text-sm text-black hover:bg-[#E8A870]/10 transition-colors">
-                        点击了解
-                      </button>
-                    </div>
+                  {/* Click to learn more button */}
+                  <div className="flex justify-end">
+                    <button className="px-6 py-2 border-2 border-[#E8A870] rounded-full text-sm text-black hover:bg-[#E8A870]/10 transition-colors">
+                      点击了解
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+    </div>
 
       <style>{`
         /* Custom scrollbar for mobile */
