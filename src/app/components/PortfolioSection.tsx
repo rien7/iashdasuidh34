@@ -71,7 +71,9 @@ export default function PortfolioSection() {
           {portfolioItems.map((item) => (
             <div
               key={item.id}
-              className="relative flex-shrink-0 group cursor-pointer"
+              className={`relative group cursor-pointer flex-shrink-0 lg:flex-shrink lg:min-w-0 transition-[flex] duration-500 ease-out ${
+                hoveredId === item.id ? "lg:flex-[1.6]" : "lg:flex-[1]"
+              }`}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
