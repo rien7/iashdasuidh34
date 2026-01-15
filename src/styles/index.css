@@ -1,0 +1,24 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+.css-18795si {
+  top: 10rem;
+  margin-block-start: 1.25rem;
+  min-width: 200px;
+  -webkit-background-size: auto 100%;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.5s linear normal;
+  transition: all 0.5s linear normal;
+}
+
+@keyframes brandLoop {
+  0% {
+    -webkit-background-position: 0;
+    background-position: 0;
+  }
+  100% {
+    -webkit-background-position: 100%;
+    background-position: 100%;
+  }
+}
