@@ -50,7 +50,7 @@ export default function PortfolioSection() {
   ];
 
   return (
-    <section className="relative min-h-screen w-full bg-[#F5F3F0] py-12 rounded-t-[40px] overflow-hidden">
+    <section className="relative min-h-screen w-full bg-[#F5F3F0] pt-24 pb-12 lg:pt-28 rounded-t-[40px] overflow-hidden scroll-mt-24 lg:scroll-mt-28">
       <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 gap-6">

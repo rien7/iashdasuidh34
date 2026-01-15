@@ -100,7 +100,7 @@ export default function BankingSection() {
   };
 
   return (
-    <section className="relative min-h-screen w-full bg-[#F5F3F0] py-20">
+    <section className="relative min-h-screen w-full bg-[#F5F3F0] pt-24 pb-20 lg:pt-28 scroll-mt-24 lg:scroll-mt-28">
       {/* Header */}
       <div className="flex flex-col items-center w-full mb-12">
         <h1 className="text-4xl lg:text-5xl mb-4 text-black tracking-tight">精通技术的营销机构</h1>

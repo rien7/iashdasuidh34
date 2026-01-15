@@ -11,17 +11,25 @@ export default function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPosition = window.scrollY;
-      const scrollPercentage = (scrollPosition / scrollHeight) * 100;
-      
-      setShowFooter(scrollPercentage > 50);
+      const scrollDistance = document.documentElement.scrollHeight - window.innerHeight;
+
+      if (scrollDistance <= 0) {
+        setShowFooter(false);
+        return;
+      }
+
+      const revealPoint = Math.max(scrollDistance - window.innerHeight, 0);
+      setShowFooter(window.scrollY >= revealPoint);
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial state
+    window.addEventListener('resize', handleScroll);
+    handleScroll();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   return (
@@ -41,8 +49,7 @@ export default function App() {
         <PortfolioSection />
         <BankingSection />
         <CaseStudy />
-        {/* Spacer equal to footer height to reveal it completely when scrolled to bottom */}
-        {/* Approximate footer height: top section ~280px + bottom section ~320px = ~600px */}
+        {/* Spacer to reveal the footer on the last page */}
         <div className="h-[618px] pointer-events-none"></div>
       </div>
     </div>
