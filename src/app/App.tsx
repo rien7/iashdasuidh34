@@ -6,6 +6,7 @@ import BankingSection from '@/app/components/BankingSection';
 import CaseStudy from '@/app/components/CaseStudy';
 import Footer from '@/app/components/Footer';
 import Navigation from '@/app/components/Navigation';
+import HighlightsSection from '@/app/components/HighlightsSection';
 
 const FOOTER_REVEAL_HEIGHT = 424;
 
