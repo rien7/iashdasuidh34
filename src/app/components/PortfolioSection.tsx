@@ -77,8 +77,8 @@ export default function PortfolioSection() {
             {/* Card Container */}
             <div
               className={`relative h-[500px] rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${hoveredId === item.id
-                  ? "w-[360px] shadow-2xl"
-                  : "w-[280px] shadow-lg"
+                ? "w-[360px] shadow-2xl"
+                : "w-[280px] shadow-lg"
                 }`}
             >
               {/* Collapsed State - Not Hovered */}
