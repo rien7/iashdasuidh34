@@ -14,30 +14,23 @@ export default function Footer() {
           </div>
 
           {/* Center - Contact Form */}
-          <div className="bg-white rounded-2xl p-8">
-            <h3 className="text-xl font-bold text-black mb-6">联系我们</h3>
-            
+          <div className="">
+            <h3 className="text-xl font-bold text-white/80 mb-6">联系我们</h3>
+
             <form className="space-y-4">
               {/* Company Name */}
               <input 
                 type="text"
-                placeholder="企业名称"
+                placeholder="公司名称"
                 className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-black placeholder:text-gray-400 focus:outline-none focus:border-gray-300 transition-all text-sm"
               />
 
               {/* Name and Position */}
-              <div className="grid grid-cols-2 gap-4">
-                <input 
+              <input 
                   type="text"
                   placeholder="姓名"
-                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-black placeholder:text-gray-400 focus:outline-none focus:border-gray-300 transition-all text-sm"
-                />
-                <input 
-                  type="text"
-                  placeholder="职位"
-                  className="px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-black placeholder:text-gray-400 focus:outline-none focus:border-gray-300 transition-all text-sm"
-                />
-              </div>
+                className=" w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-black placeholder:text-gray-400 focus:outline-none focus:border-gray-300 transition-all text-sm"
+              />
 
               {/* Phone and Email */}
               <div className="grid grid-cols-2 gap-4">
@@ -53,31 +46,12 @@ export default function Footer() {
                 />
               </div>
 
-              {/* Message */}
-              <textarea 
-                placeholder="多多寡言请填"
-                rows={3}
-                className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 text-black placeholder:text-gray-400 focus:outline-none focus:border-gray-300 transition-all resize-none text-sm"
-              ></textarea>
-
-              {/* Consent Checkbox */}
-              <div className="flex items-start gap-2">
-                <input 
-                  type="checkbox"
-                  id="consent"
-                  className="mt-1 w-4 h-4 rounded border-gray-300"
-                />
-                <label htmlFor="consent" className="text-xs text-gray-500 leading-relaxed">
-                  我同意收到营销传播
-                </label>
-              </div>
-
               {/* Submit Button */}
               <button 
                 type="submit"
                 className="w-full py-3 rounded-lg bg-gradient-to-r from-orange-500 to-red-600 text-white font-medium hover:from-orange-600 hover:to-red-700 transition-all duration-300 text-sm"
               >
-                提交联系
+                立即提交
               </button>
             </form>
           </div>
@@ -88,42 +62,33 @@ export default function Footer() {
             <div className="grid grid-cols-3 gap-8 text-sm">
               <div className="flex flex-col gap-3">
                 <a href="#" className="text-white/80 hover:text-white transition-colors">产品矩阵</a>
-                <a href="#" className="text-white/60 hover:text-white transition-colors">小马</a>
-                <a href="#" className="text-white/60 hover:text-white transition-colors">画框</a>
-                <a href="#" className="text-white/60 hover:text-white transition-colors">电商猫</a>
+                <a href="#" className="text-white/60 hover:text-white transition-colors">小飞轮</a>
+                <a href="#" className="text-white/60 hover:text-white transition-colors">问我</a>
+                <a href="#" className="text-white/60 hover:text-white transition-colors">乾坤圈</a>
+                <a href="#" className="text-white/60 hover:text-white transition-colors">火尖枪</a>
               </div>
               
               <div className="flex flex-col gap-3">
                 <a href="#" className="text-white/80 hover:text-white transition-colors">关于我们</a>
                 <a href="#" className="text-white/60 hover:text-white transition-colors">公司简介</a>
                 <a href="#" className="text-white/60 hover:text-white transition-colors">发展历程</a>
-              </div>
-              
-              <div className="flex flex-col gap-3">
-                <a href="#" className="text-white/80 hover:text-white transition-colors">联系我们</a>
+                <a href="#" className="text-white/60 hover:text-white transition-colors">企业动态</a>
                 <a href="#" className="text-white/60 hover:text-white transition-colors">加入我们</a>
               </div>
-            </div>
-
-            {/* Company Info */}
-            <div className="text-xs text-white/60 space-y-2">
-              <p>广东壹鸣惊人营销策划有限公司</p>
-              <p>联系电话：020-86519360</p>
-              <p>邮箱：A.m_a@ama-auto.com</p>
-              <p className="leading-relaxed">
-                广东省 广州市荔湾区 金华街道凯粤湾<br />
-                1-11层裙楼05
-              </p>
+              
+              <div className="flex flex-col gap-3 w-48">
+                <a href="#" className="text-white/80 hover:text-white transition-colors">联系我们</a>
+                <a href="#" className="text-white/60 hover:text-white transition-colors">广东砹脉数字营销有限公司</a>
+                <a href="#" className="text-white/60 hover:text-white transition-colors">联系电话: 020-85513160</a>
+                <a href="#" className="text-white/60 hover:text-white transition-colors">邮箱: a.m.a@ama-auto.com</a>
+                <a href="#" className="text-white/60 hover:text-white transition-colors">广东省广州市天河区 员村南街97号 T.I.T智慧园</a>
+              </div>
             </div>
 
             {/* QR Codes */}
             <div className="flex gap-4">
-              <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center">
-                <div className="w-16 h-16 bg-black"></div>
-              </div>
-              <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center">
-                <div className="w-16 h-16 bg-black"></div>
-              </div>
+              <img className="w-24 h-24" src="https://revasocialmedia-1307444343.cos.ap-guangzhou.myqcloud.com/ama-digi-site/system/03-14QR1.jpg"></img>
+              <img className="w-24 h-24" src="https://revasocialmedia-1307444343.cos.ap-guangzhou.myqcloud.com/ama-digi-site/system/ama-5-27-qrcode.jpeg"></img>
             </div>
           </div>
         </div>

@@ -115,9 +115,9 @@ export default function App() {
           }
         />
         <Route
-          path="/qiankunta"
+          path="/qiankunquan"
           element={
-            <ContentPage title="乾坤塔">
+            <ContentPage title="乾坤圈">
               <BankingSection />
             </ContentPage>
           }

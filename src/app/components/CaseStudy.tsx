@@ -34,7 +34,7 @@ export default function CaseStudy() {
         { value: '100万', label: '互动量' }
       ],
       tag: 'IA|金奖',
-      image: 'https://images.unsplash.com/photo-1617886322207-fade978d3db5?w=800'
+      image: 'https://images.unsplash.com/photo-1761839258753-85d8eecbbc29?w=800'
     },
     {
       id: 2,

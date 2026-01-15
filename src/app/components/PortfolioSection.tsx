@@ -80,7 +80,7 @@ export default function PortfolioSection() {
           >
             {/* Card Container */}
             <div
-              className={`relative h-[500px] w-full rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${hoveredId === item.id
+              className={`relative h-[640px] w-full rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${hoveredId === item.id
                 ? "shadow-2xl"
                 : "shadow-lg"
                 }`}

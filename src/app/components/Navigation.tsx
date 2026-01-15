@@ -4,7 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 const navLinks = [
   { id: 'home', label: '首页', to: '/' },
   { id: 'xiaofeilun', label: '小飞轮', to: '/xiaofeilun' },
-  { id: 'qiankunta', label: '乾坤塔', to: '/qiankunta' },
+  { id: 'qiankunta', label: '乾坤塔', to: '/qiankunquan' },
   { id: 'huojianqiang', label: '火尖枪', to: '/huojianqiang' },
   { id: 'wenwo', label: '问我', to: '/wenwo' },
   { id: 'about', label: '关于我们', to: '/about' },
@@ -66,7 +66,7 @@ export default function Navigation() {
       style={{
         top: `${topGap}px`,
         borderRadius: `${borderRadius}px`,
-        backgroundColor: `rgba(10, 14, 39, ${bgOpacity})`,
+        backgroundColor: `rgba(0, 0 ,0 , 1)`,
         margin: topGap > 0 ? '0 20px' : '0',
         width: topGap > 0 ? 'calc(100% - 40px)' : '100%',
       }}
