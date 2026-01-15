@@ -105,8 +105,7 @@ export default function PortfolioSection() {
 
               {/* Expanded State - Hovered */}
               <div
-                className={`absolute inset-0 transition-opacity duration-300 ${hoveredId === item.id ? "opacity-100" : "opacity-0 pointer-events-none"
-                  }`}
+                className={`absolute inset-0 transition-opacity duration-300 ${hoveredId === item.id ? "opacity-100 translate-y-0" : "opacity-0 pointer-events-none translate-y-4"}`}
               >
                 {/* Product logo centered in full card */}
                 <div className="absolute inset-0 flex items-center justify-center p-12">
