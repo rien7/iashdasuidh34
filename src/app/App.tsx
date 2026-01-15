@@ -7,6 +7,8 @@ import CaseStudy from '@/app/components/CaseStudy';
 import Footer from '@/app/components/Footer';
 import Navigation from '@/app/components/Navigation';
 
+const FOOTER_REVEAL_HEIGHT = 424;
+
 function HomePage() {
   const [showFooter, setShowFooter] = useState(false);
 
@@ -14,9 +16,9 @@ function HomePage() {
     const handleScroll = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
       const scrollPosition = window.scrollY;
-      const scrollPercentage = (scrollPosition / scrollHeight) * 100;
+      const distanceToBottom = scrollHeight - scrollPosition;
 
-      setShowFooter(scrollPercentage > 50);
+      setShowFooter(distanceToBottom <= FOOTER_REVEAL_HEIGHT);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -55,16 +57,20 @@ function HomePage() {
 
       <div className="relative z-10 flex flex-col">
         <div className="h-screen snap-start snap-always" aria-hidden="true"></div>
-        <section className="min-h-screen snap-start snap-always">
+        <section className="min-h-screen snap-start snap-always bg-[#0A0E27]">
           <PortfolioSection />
         </section>
         <section className="min-h-screen snap-start snap-always">
           <BankingSection />
         </section>
-        <section className="min-h-screen snap-start snap-always">
+        <section className="min-h-screen snap-start snap-always bg-[#0A0E27]">
           <CaseStudy />
         </section>
-        <div className="h-screen snap-start snap-always pointer-events-none" aria-hidden="true"></div>
+        <div
+          className="snap-start snap-always pointer-events-none"
+          aria-hidden="true"
+          style={{ height: `${FOOTER_REVEAL_HEIGHT}px` }}
+        ></div>
       </div>
     </div>
   );

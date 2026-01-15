@@ -215,11 +215,11 @@ export default function CaseStudy() {
               <div className="h-auto min-h-80 w-full max-md:hidden">
                 <div id="brand-loop-two-1-0" style={{
                   backgroundImage: "url(https://revasocialmedia-1307444343.cos.ap-guangzhou.myqcloud.com/new-ama-digi-site/qiche-brand1.png?imageMogr2/format/webp)",
-                  animation: "7.34237s linear 0s infinite normal both running brandLoop"
+                  animation: "6s linear 0s infinite normal both running brandLoop"
                 }} className="h-auto min-h-12 w-full md:min-h-32 css-18795si e7r4dh80"></div>
                 <div id="brand-loop-two-1-1" style={{
                   backgroundImage: "url(https://revasocialmedia-1307444343.cos.ap-guangzhou.myqcloud.com/new-ama-digi-site/qiche-brand2.png?imageMogr2/format/webp)",
-                  animation: "5.98563s linear 0s infinite reverse both running brandLoop"
+                  animation: "6s linear 0s infinite reverse both running brandLoop"
                 }} className="h-auto min-h-12 w-full md:min-h-32 css-18795si e7r4dh80"></div>
               </div>
             </div>
