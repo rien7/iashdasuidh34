@@ -12,11 +12,12 @@ import IndustryHonors from '@/app/components/IndustryHonors';
 import IndustryAwards from '@/app/components/IndustryAwards';
 import FeatureShowcase from '@/app/components/FeatureShowcase';
 import ShowcaseCarousel from '@/app/components/ShowcaseCarousel';
+import CompanyTimeline from '@/app/components/CompanyTimeline';
 import huojianqiangBanner from '@/assets/banner/huojianqiang-banner.webp';
 import qiankunquanBanner from '@/assets/banner/qiankunquan-banner.webp';
 import wenwoBanner from '@/assets/banner/wenwo-banner.webp';
 import xiaofeilunBanner from '@/assets/banner/xiaofeilun-banner.webp';
-import aboutBanner from '@/assets/banner/about-banner-7.11.png'
+import aboutBanner from '@/assets/banner/about-banner-7.11.png';
 
 const FOOTER_REVEAL_HEIGHT = 424;
 
@@ -29,7 +30,7 @@ function useShowFooter(revealHeight = FOOTER_REVEAL_HEIGHT) {
       const scrollPosition = window.scrollY;
       const distanceToBottom = scrollHeight - scrollPosition;
 
-      setShowFooter(distanceToBottom <= FOOTER_REVEAL_HEIGHT);
+      setShowFooter(distanceToBottom <= revealHeight);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -198,9 +199,9 @@ export default function App() {
           path="/about"
           element={
             <ContentPage title="关于我们" bannerSrc={aboutBanner} whiteText>
-              <p className="text-base text-white/70">
-                我们专注于品牌增长与整合营销，持续为客户打造可落地的创意方案。
-              </p>
+              <div className="bg-[#0A0E27]">
+                <CompanyTimeline />
+              </div>
             </ContentPage>
           }
         />
