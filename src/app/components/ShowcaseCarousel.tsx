@@ -35,7 +35,7 @@ export default function ShowcaseCarousel() {
   };
 
   return (
-    <section className="w-full bg-[#F5F3F0] py-12">
+    <section className="w-full bg-[#F5F3F0] py-12 rounded-b-[56px]">
       <div className="relative mx-auto flex w-full max-w-6xl items-center justify-center px-4 sm:px-6 lg:px-10">
         <button
           type="button"

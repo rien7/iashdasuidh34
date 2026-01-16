@@ -12,8 +12,15 @@ import IndustryHonors from '@/app/components/IndustryHonors';
 import IndustryAwards from '@/app/components/IndustryAwards';
 import FeatureShowcase from '@/app/components/FeatureShowcase';
 import ShowcaseCarousel from '@/app/components/ShowcaseCarousel';
+import huojianqiangBanner from '@/assets/banner/huojianqiang-banner.webp';
+import qiankunquanBanner from '@/assets/banner/qiankunquan-banner.webp';
+import wenwoBanner from '@/assets/banner/wenwo-banner.webp';
+import xiaofeilunBanner from '@/assets/banner/xiaofeilun-banner.webp';
+import aboutBanner from '@/assets/banner/about-banner-7.11.png'
+
 const FOOTER_REVEAL_HEIGHT = 424;
-function HomePage() {
+
+function useShowFooter(revealHeight = FOOTER_REVEAL_HEIGHT) {
   const [showFooter, setShowFooter] = useState(false);
 
   useEffect(() => {
@@ -29,7 +36,31 @@ function HomePage() {
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [revealHeight]);
+
+  return showFooter;
+}
+
+function FooterSpacer() {
+  return (
+    <div
+      className="pointer-events-none"
+      aria-hidden="true"
+      style={{ height: `${FOOTER_REVEAL_HEIGHT}px` }}
+    ></div>
+  );
+}
+
+function FooterLayer() {
+  return (
+    <div className="fixed inset-0 z-0 flex flex-col" >
+      <Footer />
+    </div>
+  );
+}
+
+function HomePage() {
+  const showFooter = useShowFooter();
 
   useEffect(() => {
     const root = document.documentElement;
@@ -56,11 +87,11 @@ function HomePage() {
   return (
     <div className="w-full">
       <div className="fixed inset-0 z-0 flex flex-col">
-        {showFooter ? <Footer /> : <HeroSection />}
+        {!showFooter && <HeroSection />}
       </div>
 
       <div className="relative z-10 flex flex-col">
-        <div className="h-screen " aria-hidden="true"></div>
+        <div className="h-screen" aria-hidden="true"></div>
         <section>
           <PortfolioSection />
         </section>
@@ -79,25 +110,38 @@ function HomePage() {
         <section className="bg-[#0A0E27]">
           <IndustryAwards />
         </section>
-        <div
-          className="pointer-events-none"
-          aria-hidden="true"
-          style={{ height: `${FOOTER_REVEAL_HEIGHT}px` }}
-        ></div>
+        <FooterSpacer />
       </div>
+
+      {showFooter && <FooterLayer />}
     </div>
   );
 }
 
-function ContentPage({ title, children }: { title: string; children: ReactNode }) {
+interface ContentPageProps {
+  title: string;
+  children: ReactNode;
+  bannerSrc?: string;
+  whiteText?: boolean
+}
+
+function ContentPage({ title, children, bannerSrc, whiteText }: ContentPageProps) {
+  const showFooter = useShowFooter();
+
   return (
-    <div className="min-h-screen bg-[#F5F3F0]">
-      <div className="mx-auto flex w-full flex-col px-8 pb-16 pt-28 lg:px-16">
-        <div className="space-y-3">
-          <h1 className="text-3xl font-semibold lg:text-4xl">{title}</h1>
+    <div>
+      <div className="relative z-10 flex w-full flex-col">
+        <div className="absolute inset-0 z-10 h-[60vh] bg-[#F5F3F0]">
+          {bannerSrc && <img src={bannerSrc} className='absolute indent-0' />}
+          <div className="relative mx-auto flex h-full flex-row items-center justify-around gap-48">
+            <span className={`text-5xl font-semibold ${whiteText ? 'text-white' : ''}`}>{title}</span>
+          </div>
         </div>
-        <div className="space-y-12">{children}</div>
+        <div className="h-[60vh] bg-[#F5F3F0]" />
+        <div className="z-10 bg-[#0A0E27]">{children}</div>
+        <FooterSpacer />
       </div>
+      {showFooter && <FooterLayer />}
     </div>
   );
 }
@@ -113,7 +157,7 @@ export default function App() {
         <Route
           path="/xiaofeilun"
           element={
-            <ContentPage title="小飞轮">
+            <ContentPage title="小飞轮" bannerSrc={xiaofeilunBanner}>
               <HighlightsSection />
               <FeatureShowcase />
               <ShowcaseCarousel />
@@ -123,7 +167,7 @@ export default function App() {
         <Route
           path="/qiankunquan"
           element={
-            <ContentPage title="乾坤圈">
+            <ContentPage title="乾坤圈" bannerSrc={qiankunquanBanner}>
               <HighlightsSection />
               <FeatureShowcase />
               <ShowcaseCarousel />
@@ -133,25 +177,27 @@ export default function App() {
         <Route
           path="/huojianqiang"
           element={
-            <ContentPage title="火尖枪">
+            <ContentPage title="火尖枪" bannerSrc={huojianqiangBanner}>
               <HighlightsSection />
               <FeatureShowcase />
               <ShowcaseCarousel />
             </ContentPage>
           }
         />
-        <Route path="/wenwo" element={
-          <ContentPage title="问我">
-            <HighlightsSection />
-            <FeatureShowcase />
-            <ShowcaseCarousel />
-          </ContentPage>
-        } />
+        <Route
+          path="/wenwo"
+          element={
+            <ContentPage title="问我" bannerSrc={wenwoBanner}>
+              <HighlightsSection />
+              <FeatureShowcase />
+              <ShowcaseCarousel />
+            </ContentPage>
+          }
+        />
         <Route
           path="/about"
           element={
-
-            <ContentPage title="关于我们">
+            <ContentPage title="关于我们" bannerSrc={aboutBanner} whiteText>
               <p className="text-base text-white/70">
                 我们专注于品牌增长与整合营销，持续为客户打造可落地的创意方案。
               </p>
