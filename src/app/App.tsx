@@ -18,6 +18,7 @@ import qiankunquanBanner from '@/assets/banner/qiankunquan-banner.webp';
 import wenwoBanner from '@/assets/banner/wenwo-banner.webp';
 import xiaofeilunBanner from '@/assets/banner/xiaofeilun-banner.webp';
 import aboutBanner from '@/assets/banner/about-banner-7.11.png';
+import { Activity } from '@/app/components/Activity';
 
 const FOOTER_REVEAL_HEIGHT = 424;
 
@@ -201,6 +202,7 @@ export default function App() {
             <ContentPage title="关于我们" bannerSrc={aboutBanner} whiteText>
               <div className="bg-[#0A0E27]">
                 <CompanyTimeline />
+                <Activity />
               </div>
             </ContentPage>
           }

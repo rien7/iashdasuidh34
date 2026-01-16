@@ -7,6 +7,7 @@ interface PortfolioItem {
   slogan: string;
   description: string;
   image: string;
+  link: string
 }
 
 export default function PortfolioSection() {
@@ -22,6 +23,7 @@ export default function PortfolioSection() {
       description: "1 分钟批量生成 1000 + 视频",
       image:
         "https://revasocialmedia-1307444343.cos.ap-guangzhou.myqcloud.com//ama-digi-site/system/12-1-1701427747529.png?imageMogr2/format/webp",
+      link: '/xiaofeilun'
     },
     {
       id: 2,
@@ -30,6 +32,7 @@ export default function PortfolioSection() {
       description: "主流平台内容监测和用户触达系统",
       image:
         "https://revasocialmedia-1307444343.cos.ap-guangzhou.myqcloud.com//ama-digi-site/system/12-1-1701427675548.png?imageMogr2/format/webp",
+      link: '/qiankunquan'
     },
     {
       id: 3,
@@ -38,6 +41,7 @@ export default function PortfolioSection() {
       description: "企业私域增长和智能化运营平台",
       image:
         "https://revasocialmedia-1307444343.cos.ap-guangzhou.myqcloud.com//ama-digi-site/system/12-1-1701427768941.png?imageMogr2/format/webp",
+      link: '/huojianqiang'
     },
     {
       id: 4,
@@ -46,6 +50,7 @@ export default function PortfolioSection() {
       description: "全球达人建联和品牌社媒数据平台",
       image:
         "https://revasocialmedia-1307444343.cos.ap-guangzhou.myqcloud.com//ama-digi-site/system/12-1-1701427721721.png?imageMogr2/format/webp",
+      link: '/wenwo'
     },
   ];
 
@@ -114,7 +119,10 @@ export default function PortfolioSection() {
                         {item.description}
                       </p>
                       <div className="mt-4 flex justify-end">
-                        <button className="px-6 py-2 border-2 border-[#E8A870] rounded-full text-sm text-black hover:bg-[#E8A870]/10 transition-colors">
+                        <button className="px-6 py-2 border-2 border-[#E8A870] rounded-full text-sm text-black hover:bg-[#E8A870]/10 transition-colors"
+                          onClick={() => {
+                            window.location.href = `${window.location.origin}${item.link}`
+                          }}>
                           点击了解
                         </button>
                       </div>

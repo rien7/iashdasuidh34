@@ -22,3 +22,18 @@
     background-position: 100%;
   }
 }
+.animate-rolling {
+  animation: rolling 50s linear infinite
+}
+.animate-rolling-reverse {
+  animation: rolling 50s linear infinite reverse
+}
+@keyframes rolling {
+  0% {
+      transform: translateX(0)
+  }
+
+  to {
+      transform: translateX(-100%)
+  }
+}
