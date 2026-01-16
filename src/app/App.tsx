@@ -7,9 +7,8 @@ import CaseStudy from '@/app/components/CaseStudy';
 import Footer from '@/app/components/Footer';
 import Navigation from '@/app/components/Navigation';
 import HighlightsSection from '@/app/components/HighlightsSection';
-
+import ArchitectureDiagram from '@/app/components/ArchitectureDiagram';
 const FOOTER_REVEAL_HEIGHT = 424;
-
 function HomePage() {
   const [showFooter, setShowFooter] = useState(false);
 
@@ -57,18 +56,21 @@ function HomePage() {
       </div>
 
       <div className="relative z-10 flex flex-col">
-        <div className="h-screen snap-start snap-always" aria-hidden="true"></div>
-        <section className="min-h-screen snap-start snap-always bg-[#0A0E27]">
+        <div className="h-screen " aria-hidden="true"></div>
+        <section className="">
           <PortfolioSection />
         </section>
-        <section className="min-h-screen snap-start snap-always">
+        <section className="">
           <BankingSection />
         </section>
-        <section className="min-h-screen snap-start snap-always bg-[#0A0E27]">
+        <section>
+          <ArchitectureDiagram />
+        </section>
+        <section className="bg-[#0A0E27]">
           <CaseStudy />
         </section>
         <div
-          className="snap-start snap-always pointer-events-none"
+          className="pointer-events-none"
           aria-hidden="true"
           style={{ height: `${FOOTER_REVEAL_HEIGHT}px` }}
         ></div>
@@ -80,10 +82,9 @@ function HomePage() {
 function ContentPage({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="min-h-screen bg-[#0A0E27] text-white">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-8 pb-16 pt-28 lg:px-16">
+      <div className="mx-auto flex w-full flex-col px-8 pb-16 pt-28 lg:px-16">
         <div className="space-y-3">
           <h1 className="text-3xl font-semibold lg:text-4xl">{title}</h1>
-          <p className="text-sm text-white/60">这里是对应的专题内容。</p>
         </div>
         <div className="space-y-12">{children}</div>
       </div>
@@ -98,6 +99,7 @@ function ContactPage() {
         <h1 className="text-3xl font-semibold lg:text-4xl">问我</h1>
         <p className="mt-4 text-sm text-white/60">欢迎留下你的需求，我们会尽快联系。</p>
       </div>
+      <HighlightsSection />
       <div className="relative min-h-[720px]">
         <Footer />
       </div>
@@ -117,7 +119,7 @@ export default function App() {
           path="/xiaofeilun"
           element={
             <ContentPage title="小飞轮">
-              <PortfolioSection />
+              <HighlightsSection />
             </ContentPage>
           }
         />
@@ -125,7 +127,7 @@ export default function App() {
           path="/qiankunquan"
           element={
             <ContentPage title="乾坤圈">
-              <BankingSection />
+              <HighlightsSection />
             </ContentPage>
           }
         />
@@ -133,14 +135,19 @@ export default function App() {
           path="/huojianqiang"
           element={
             <ContentPage title="火尖枪">
-              <CaseStudy />
+              <HighlightsSection />
             </ContentPage>
           }
         />
-        <Route path="/wenwo" element={<ContactPage />} />
+        <Route path="/wenwo" element={
+          <ContentPage title="问我">
+            <HighlightsSection />
+          </ContentPage>
+        } />
         <Route
           path="/about"
           element={
+
             <ContentPage title="关于我们">
               <p className="text-base text-white/70">
                 我们专注于品牌增长与整合营销，持续为客户打造可落地的创意方案。

@@ -2,10 +2,10 @@ import type { ReactNode } from 'react';
 import { MessageSquare, SquareArrowUpRight, Tag } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { ImageWithFallback } from './figma/ImageWithFallback';
-import highlightXiaofeilun from '@/assets/highlights/highlight-xiaofeilun.svg';
-import highlightQiankunquan from '@/assets/highlights/highlight-qiankunquan.svg';
-import highlightHuojianqiang from '@/assets/highlights/highlight-huojianqiang.svg';
-import highlightWenwo from '@/assets/highlights/highlight-wenwo.svg';
+import highlightXiaofeilun from '@/assets/highlights/xiaofeilun-highlight.png';
+import highlightQiankunquan from '@/assets/highlights/qiankunquan-highlight.png';
+import highlightHuojianqiang from '@/assets/highlights/huojianqiang-highlight.png';
+import highlightWenwo from '@/assets/highlights/wenwo-highlight.png';
 
 interface HighlightItem {
   id: number;
@@ -21,7 +21,7 @@ export default function HighlightsSection() {
 
   return (
     <section className="w-full bg-[#0A0E27] text-white">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-8 pb-16 pt-12 lg:flex-row lg:items-start lg:gap-12 lg:px-16">
+      <div className="mx-auto flex w-full flex-col gap-10 pb-16 pt-12 lg:flex-row lg:items-start lg:gap-12">
         <div className="flex w-full flex-col gap-6 lg:w-[56%]">
           <div className="flex items-center gap-3 text-xs uppercase tracking-[0.32em] text-white/60">
             <span className="h-1.5 w-1.5 rounded-full bg-white/60" />
