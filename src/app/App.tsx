@@ -89,27 +89,12 @@ function HomePage() {
 
 function ContentPage({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-[#0A0E27] text-white">
+    <div className="min-h-screen bg-[#F5F3F0]">
       <div className="mx-auto flex w-full flex-col px-8 pb-16 pt-28 lg:px-16">
         <div className="space-y-3">
           <h1 className="text-3xl font-semibold lg:text-4xl">{title}</h1>
         </div>
         <div className="space-y-12">{children}</div>
-      </div>
-    </div>
-  );
-}
-
-function ContactPage() {
-  return (
-    <div className="min-h-screen bg-[#0A0E27] text-white">
-      <div className="mx-auto w-full max-w-6xl px-8 pb-16 pt-28 lg:px-16">
-        <h1 className="text-3xl font-semibold lg:text-4xl">问我</h1>
-        <p className="mt-4 text-sm text-white/60">欢迎留下你的需求，我们会尽快联系。</p>
-      </div>
-      <HighlightsSection />
-      <div className="relative min-h-[720px]">
-        <Footer />
       </div>
     </div>
   );
