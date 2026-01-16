@@ -18,7 +18,7 @@ export default function PortfolioSection() {
     {
       id: 1,
       name: "小飞轮",
-      slogan: "「内容智能生产与协作系统」",
+      slogan: "内容智能生产与协作系统",
       description: "1 分钟批量生成 1000 + 视频",
       image:
         "https://revasocialmedia-1307444343.cos.ap-guangzhou.myqcloud.com//ama-digi-site/system/12-1-1701427747529.png?imageMogr2/format/webp",
@@ -53,12 +53,12 @@ export default function PortfolioSection() {
     <section className="relative min-h-screen w-full rounded-t-[56px] bg-[#F5F3F0] pt-24 pb-12 lg:pt-28 overflow-hidden scroll-mt-24 lg:scroll-mt-28">
       <div className="max-w-[1440px] mx-auto">
         {/* Header */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 gap-6">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 gap-6 mt-12">
           <div className="flex flex-col items-center w-full">
             <h1 className="text-4xl lg:text-5xl mb-4 text-black tracking-tight">
               产品矩阵
             </h1>
-            <nav className="flex gap-8 text-sm text-black/70">
+            <nav className="flex gap-8 text-lg text-black/70">
               <span className="hover:text-black transition-colors">
                 整合本土最大营销集团与前阿里技术团队的能力与经验，为品牌客户提供具备营销智慧的产品技术解决方案，引领企业营销新增长
               </span>
@@ -72,16 +72,16 @@ export default function PortfolioSection() {
             <div
               key={item.id}
               className={`relative group cursor-pointer flex-shrink-0 transition-[width] duration-500 ease-out ${hoveredId === null
-                ? "w-[360px]"
+                ? "w-[276px]"
                 : hoveredId === item.id
-                  ? "w-[480px]"
-                  : "w-[320px]"}`}
+                  ? "w-[360px]"
+                  : "w-[248px]"}`}
               onMouseEnter={() => setHoveredId(item.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
               {/* Card Container */}
               <div
-                className={`relative h-[640px] w-full rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${hoveredId === item.id
+                className={`relative h-[420px] w-full rounded-[24px] overflow-hidden bg-white transition-all duration-500 ease-out ${hoveredId === item.id
                   ? "shadow-2xl -translate-y-3"
                   : "shadow-lg translate-y-0"
                   }`}

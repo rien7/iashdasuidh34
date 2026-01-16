@@ -8,6 +8,8 @@ import Footer from '@/app/components/Footer';
 import Navigation from '@/app/components/Navigation';
 import HighlightsSection from '@/app/components/HighlightsSection';
 import ArchitectureDiagram from '@/app/components/ArchitectureDiagram';
+import IndustryHonors from '@/app/components/IndustryHonors';
+import IndustryAwards from '@/app/components/IndustryAwards';
 const FOOTER_REVEAL_HEIGHT = 424;
 function HomePage() {
   const [showFooter, setShowFooter] = useState(false);
@@ -57,17 +59,23 @@ function HomePage() {
 
       <div className="relative z-10 flex flex-col">
         <div className="h-screen " aria-hidden="true"></div>
-        <section className="">
+        <section>
           <PortfolioSection />
         </section>
-        <section className="">
+        <section>
           <BankingSection />
         </section>
         <section>
           <ArchitectureDiagram />
         </section>
-        <section className="bg-[#0A0E27]">
+        <section>
           <CaseStudy />
+        </section>
+        <section>
+          <IndustryHonors />
+        </section>
+        <section className="bg-[#0A0E27]">
+          <IndustryAwards />
         </section>
         <div
           className="pointer-events-none"

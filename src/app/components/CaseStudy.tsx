@@ -67,7 +67,7 @@ export default function CaseStudy() {
   const activeCase = cases[activeCard];
 
   return (
-    <section className="relative w-full rounded-b-[56px] bg-[#F5F3F0] pt-24 pb-20 lg:pt-28 scroll-mt-24 lg:scroll-mt-28">
+    <section className="relative w-full bg-[#F5F3F0] pt-24 pb-20 lg:pt-28 scroll-mt-24 lg:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-8 lg:px-16">
         {/* Title and Subtitle - Outside white container */}
         <div className="text-center mb-12">
