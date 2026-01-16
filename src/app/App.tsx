@@ -10,6 +10,8 @@ import HighlightsSection from '@/app/components/HighlightsSection';
 import ArchitectureDiagram from '@/app/components/ArchitectureDiagram';
 import IndustryHonors from '@/app/components/IndustryHonors';
 import IndustryAwards from '@/app/components/IndustryAwards';
+import FeatureShowcase from '@/app/components/FeatureShowcase';
+import ShowcaseCarousel from '@/app/components/ShowcaseCarousel';
 const FOOTER_REVEAL_HEIGHT = 424;
 function HomePage() {
   const [showFooter, setShowFooter] = useState(false);
@@ -113,6 +115,8 @@ export default function App() {
           element={
             <ContentPage title="小飞轮">
               <HighlightsSection />
+              <FeatureShowcase />
+              <ShowcaseCarousel />
             </ContentPage>
           }
         />
@@ -121,6 +125,8 @@ export default function App() {
           element={
             <ContentPage title="乾坤圈">
               <HighlightsSection />
+              <FeatureShowcase />
+              <ShowcaseCarousel />
             </ContentPage>
           }
         />
@@ -129,12 +135,16 @@ export default function App() {
           element={
             <ContentPage title="火尖枪">
               <HighlightsSection />
+              <FeatureShowcase />
+              <ShowcaseCarousel />
             </ContentPage>
           }
         />
         <Route path="/wenwo" element={
           <ContentPage title="问我">
             <HighlightsSection />
+            <FeatureShowcase />
+            <ShowcaseCarousel />
           </ContentPage>
         } />
         <Route
